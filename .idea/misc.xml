@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/Asteriods_NeoWs/src/main/res/layout/fragment_asteriods_neo_ws.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/Asteroids_NeoWs/src/main/res/layout/fragment_asteroids_neo_ws.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/drawable-night/launch_screen.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/drawable-v24/splash_screen.xml" value="0.107" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/drawable/launch_screen.xml" value="0.107" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout-land/navigaton_drawer_header.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout-night/dowload.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout-night/download.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/download.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_apod.xml" value="0.33" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_apod_base.xml" value="0.14" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_list_images.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_pictures_archive.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_test1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_test2.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/fragment_test3.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/item_picture.xml" value="0.4767932489451477" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/nav_content.xml" value="0.13" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/layout/navigaton_drawer_header.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/menu/menu_navigatoin_drawer.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

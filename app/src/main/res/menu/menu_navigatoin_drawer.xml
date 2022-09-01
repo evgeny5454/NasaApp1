@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/apodBaseFragment"
+            android:title="APOD" />
+        <item
+            android:id="@+id/asteroidsNeoWsFragment"
+            android:title="Asteroids - NeoWs" />
+        <item
+            android:id="@+id/donki"
+            android:title="DONKI" />
+        <item
+            android:id="@+id/earth"
+            android:title="Earth" />
+        <item
+            android:id="@+id/eonet"
+            android:title="EONET" />
+        <item
+            android:id="@+id/epic"
+            android:title="EPIC" />
+        <item
+            android:id="@+id/gene_lab"
+            android:title="GeneLab" />
+        <item
+            android:id="@+id/in_sight"
+            android:title="InSight" />
+        <item
+            android:id="@+id/mars_rover_photos"
+            android:title="Mars Rover Photos" />
+        <item
+            android:id="@+id/nasa_image_and_video_library"
+            android:title="NASA Image and Video Library" />
+        <item
+            android:id="@+id/tech_transfer"
+            android:title="TechTransfer" />
+        <item
+            android:id="@+id/satellite_situation_center"
+            android:title="Satellite Situation Center" />
+        <item
+            android:id="@+id/ssd_cneos"
+            android:title="SSD/CNEOS" />
+        <item
+            android:id="@+id/techport"
+            android:title="Techport" />
+        <item
+            android:id="@+id/tle_api"
+            android:title="TLE API" />
+        <item
+            android:id="@+id/vesta_moon_mars_trek_wmts"
+            android:title="Vesta/Moon/Mars Trek WMTS" />
+    </group>
+
+</menu>
