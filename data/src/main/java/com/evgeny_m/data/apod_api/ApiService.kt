@@ -1,7 +1,6 @@
 package com.evgeny_m.data.apod_api
 
 import com.evgeny_m.data.model.ApodData
-import com.evgeny_m.data.model.DataList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

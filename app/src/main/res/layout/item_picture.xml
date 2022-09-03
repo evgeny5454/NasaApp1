@@ -38,6 +38,28 @@
                     app:icon="@drawable/ic_baseline_play_arrow_24"
                     app:iconGravity="end"
                     app:iconSize="60dp" />
+
+                <LinearLayout
+                    android:id="@+id/web_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/favicon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Title Web" />
+
+                </LinearLayout>
+
             </FrameLayout>
 
 
@@ -47,29 +69,12 @@
             android:layout_width="match_parent"
             android:layout_height="5dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                tools:text="2022-08-27" />
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:id="@+id/position"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                tools:text="1" />
-        </LinearLayout>
-
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:text="2022-08-27" />
 
         <Space
             android:layout_width="match_parent"

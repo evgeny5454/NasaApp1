@@ -1,16 +1,14 @@
 package com.evgeny_m.nasaapp.presenter.app_screens.pages
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.evgeny_m.data.utils.MediaType
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.nasaapp.databinding.ItemPictureBinding
-import com.evgeny_m.nasaapp.utilits.MediaType
-import com.evgeny_m.nasaapp.utilits.getYoutubeImage
 import java.time.LocalDate
 
 class PicturesAdapter(private val context: Context) :
@@ -32,27 +30,38 @@ class PicturesAdapter(private val context: Context) :
             date.text = image.date.toString()
             when (image.media_type) {
                 MediaType.Image.type -> {
+                    picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.GONE
+                    webImage.visibility = View.GONE
 
                     Glide.with(context)
                         .load(image.url)
-                        //.thumbnail(0.33f)
                         .centerCrop()
                         .into(picture)
                 }
                 MediaType.Video.type -> {
+                    picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.VISIBLE
+                    webImage.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(getYoutubeImage(image.url))
-                        //.thumbnail(0.33f)
+                        .load(image.url)
                         .centerCrop()
                         .into(picture)
                 }
+                MediaType.Web.type -> {
+                    picture.visibility = View.VISIBLE
+                    videoPlayButton.visibility = View.GONE
+                    webImage.visibility = View.VISIBLE
 
+                    Glide.with(context)
+                        .load(image.url)
+                        .centerCrop()
+                        .into(favicon)
+                    title.text = image.title
+                }
                 else -> {}
             }
-
         }
     }
 
@@ -66,20 +75,10 @@ class PicturesAdapter(private val context: Context) :
         } else {
             images.addAll(images.size, listData)
         }
-        notifyDataSetChanged()
+        notifyItemRangeInserted(images.size, listData.size)
     }
 
-    fun deleteItems(datesCount: Int) {
-        for (i in 1..datesCount) {
-            images.removeFirst()
-        }
-    }
-
-    fun getLastDate() : LocalDate {
+    fun getLastDate(): LocalDate {
         return images.last().date
     }
-    fun getFirstDate() : LocalDate {
-        return images.first().date
-    }
-
 }
