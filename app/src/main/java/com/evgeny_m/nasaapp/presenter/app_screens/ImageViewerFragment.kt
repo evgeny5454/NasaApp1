@@ -1,5 +1,6 @@
 package com.evgeny_m.nasaapp.presenter.app_screens
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,24 +20,28 @@ class ImageViewerFragment : Fragment() {
 
     private lateinit var binding: FragmentImageViewerBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentImageViewerBinding.inflate(layoutInflater)
 
-        val download = binding.downloadScreen
-        download.visibility = View.VISIBLE
-        Glide.with(requireContext())
+        val downloadScreen = binding.downloadScreen
+        val downloadAnimation = binding.animation
+
+        downloadScreen.visibility = View.VISIBLE
+        Glide.with(this)
             .load(R.drawable.load)
             .placeholder(R.drawable.load)
-            .into(binding.animation)
+            .into(downloadAnimation)
+            .clearOnDetach()
 
         Picasso.get()
             .load(args.uri)
             .into(binding.imageView, object : Callback {
                 override fun onSuccess() {
-                    download.visibility = View.GONE
+                    downloadScreen.visibility = View.GONE
                 }
 
                 override fun onError(e: Exception?) {
@@ -46,5 +51,4 @@ class ImageViewerFragment : Fragment() {
             })
         return binding.root
     }
-
 }
