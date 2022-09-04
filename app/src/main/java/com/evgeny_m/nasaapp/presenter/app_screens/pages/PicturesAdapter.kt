@@ -32,33 +32,32 @@ class PicturesAdapter(private val context: Context) :
                 MediaType.Image.type -> {
                     picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.GONE
-                    webImage.visibility = View.GONE
+                    web.visibility = View.GONE
+                    titleWeb.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(image.url)
+                        .load(image.urlImage)
                         .centerCrop()
                         .into(picture)
                 }
                 MediaType.Video.type -> {
                     picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.VISIBLE
-                    webImage.visibility = View.GONE
+                    web.visibility = View.GONE
+                    titleWeb.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(image.url)
+                        .load(image.urlImage)
                         .centerCrop()
                         .into(picture)
                 }
                 MediaType.Web.type -> {
                     picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.GONE
-                    webImage.visibility = View.VISIBLE
+                    web.visibility = View.VISIBLE
+                    titleWeb.visibility = View.VISIBLE
 
-                    Glide.with(context)
-                        .load(image.url)
-                        .centerCrop()
-                        .into(favicon)
-                    title.text = image.title
+                    titleWeb.text = image.title
                 }
                 else -> {}
             }

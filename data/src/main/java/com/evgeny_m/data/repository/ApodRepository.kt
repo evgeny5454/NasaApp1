@@ -38,16 +38,6 @@ class ApodRepository(context: Context) : Repository {
             val item = response.body()
             item?.let {
                 apodToItem(it)
-                /*Item(
-                    copyright = it.copyright ?: "",
-                    date = stringToLocalDate(it.date!!),
-                    explanation = it.explanation ?: "",
-                    hdurl = it.hdurl ?: "",
-                    media_type = it.media_type ?: "",
-                    service_version = it.service_version ?: "",
-                    title = it.title ?: "",
-                    url = it.url ?: ""
-                )*/
             }
 
         } else {
@@ -85,18 +75,6 @@ class ApodRepository(context: Context) : Repository {
 
                 reversedList?.forEach {
                     result.add(apodToItem(it))
-                    /*result.add(
-                        Item(
-                            copyright = it.copyright ?: "",
-                            date = stringToLocalDate(it.date!!),
-                            explanation = it.explanation ?: "",
-                            hdurl = it.hdurl ?: "",
-                            media_type = it.media_type ?: "",
-                            service_version = it.service_version ?: "",
-                            title = it.title ?: "",
-                            url = it.url ?: ""
-                        )
-                    )*/
                 }
 
             } else {

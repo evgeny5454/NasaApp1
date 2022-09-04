@@ -1,6 +1,7 @@
 package com.evgeny_m.data.utils
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.evgeny_m.data.model.ApodData
 import com.evgeny_m.data.stringToLocalDate
@@ -20,36 +21,37 @@ fun apodToItem(apodData: ApodData): Item {
             copyright = apodData.copyright ?: "",
             date = stringToLocalDate(apodData.date!!),
             explanation = apodData.explanation ?: "",
-            hdurl = apodData.hdurl ?: "",
+            url = apodData.hdurl ?: "",
             media_type = MediaType.Video.type,
             service_version = apodData.service_version ?: "",
             title = apodData.title ?: "",
-            url = "https://img.youtube.com/vi/$id/mqdefault.jpg"
+            urlImage = "https://img.youtube.com/vi/$id/mqdefault.jpg"
         )
 
     } else if (!urlList.contains("www.youtube.com") &&
         apodData.media_type == MediaType.Video.type
     ) {
+        Log.d("FAVICON", urlList.toString())
         return Item(
             copyright = apodData.copyright ?: "",
             date = stringToLocalDate(apodData.date!!),
             explanation = apodData.explanation ?: "",
-            hdurl = apodData.hdurl ?: "",
+            url = apodData.hdurl ?: "",
             media_type = MediaType.Web.type,
             service_version = apodData.service_version ?: "",
             title = apodData.title ?: "",
-            url = "http://favicon.yandex.net/favicon/${urlList[2]}"
+            urlImage = "http://favicon.yandex.net/favicon/${urlList[2]}"
         )
     } else {
         return Item(
             copyright = apodData.copyright ?: "",
             date = stringToLocalDate(apodData.date!!),
             explanation = apodData.explanation ?: "",
-            hdurl = apodData.hdurl ?: "",
+            url = apodData.hdurl ?: "",
             media_type = MediaType.Image.type,
             service_version = apodData.service_version ?: "",
             title = apodData.title ?: "",
-            url = apodData.url
+            urlImage = apodData.url
         )
     }
 }
