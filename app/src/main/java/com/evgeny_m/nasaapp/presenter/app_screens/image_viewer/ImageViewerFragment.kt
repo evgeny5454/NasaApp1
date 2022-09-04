@@ -1,6 +1,5 @@
-package com.evgeny_m.nasaapp.presenter.app_screens
+package com.evgeny_m.nasaapp.presenter.app_screens.image_viewer
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
