@@ -1,16 +1,17 @@
 package com.evgeny_m.nasaapp.presenter.app_screens.pages
 
 import android.content.Context
-import android.util.Log
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.evgeny_m.data.utils.MediaType
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.nasaapp.databinding.ItemPictureBinding
-import com.evgeny_m.nasaapp.utilits.MediaType
-import com.evgeny_m.nasaapp.utilits.getYoutubeImage
 import java.time.LocalDate
 
 class PicturesAdapter(private val context: Context) :
@@ -32,24 +33,48 @@ class PicturesAdapter(private val context: Context) :
             date.text = image.date.toString()
             when (image.media_type) {
                 MediaType.Image.type -> {
+                    picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.GONE
+                    web.visibility = View.GONE
+                    titleWeb.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(image.url)
-                        //.thumbnail(0.33f)
+                        .load(image.urlImagePreview)
                         .centerCrop()
                         .into(picture)
+                    item.setOnClickListener(View.OnClickListener {
+                        Toast.makeText(context, "${image.url}", Toast.LENGTH_SHORT).show()})
+
                 }
                 MediaType.Video.type -> {
+                    picture.visibility = View.VISIBLE
                     videoPlayButton.visibility = View.VISIBLE
+                    web.visibility = View.GONE
+                    titleWeb.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(getYoutubeImage(image.url))
-                        //.thumbnail(0.33f)
+                        .load(image.urlImagePreview)
                         .centerCrop()
                         .into(picture)
+                    item.setOnClickListener(View.OnClickListener {
+                        val uri = Uri.parse(image.url)
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        context.startActivity(intent)
+                    })
                 }
+                MediaType.Web.type -> {
+                    picture.visibility = View.VISIBLE
+                    videoPlayButton.visibility = View.GONE
+                    web.visibility = View.VISIBLE
+                    titleWeb.visibility = View.VISIBLE
 
+                    titleWeb.text = image.title
+                    item.setOnClickListener(View.OnClickListener {
+                        val uri = Uri.parse(image.url)
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        context.startActivity(intent)
+                    })
+                }
                 else -> {}
             }
 
@@ -66,20 +91,10 @@ class PicturesAdapter(private val context: Context) :
         } else {
             images.addAll(images.size, listData)
         }
-        notifyDataSetChanged()
+        notifyItemRangeInserted(images.size, listData.size)
     }
 
-    fun deleteItems(datesCount: Int) {
-        for (i in 1..datesCount) {
-            images.removeFirst()
-        }
-    }
-
-    fun getLastDate() : LocalDate {
+    fun getLastDate(): LocalDate {
         return images.last().date
     }
-    fun getFirstDate() : LocalDate {
-        return images.first().date
-    }
-
 }

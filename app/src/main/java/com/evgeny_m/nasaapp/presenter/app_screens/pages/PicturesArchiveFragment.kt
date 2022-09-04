@@ -24,12 +24,9 @@ class PicturesArchiveFragment : Fragment() {
     private lateinit var viewModel: ApodViewModel
     private lateinit var adapter: PicturesAdapter
 
-
     lateinit var downLoadScreen: FrameLayout
 
-    //var load = false
     var loading = false
-    //var isUp = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -45,7 +42,6 @@ class PicturesArchiveFragment : Fragment() {
             .into(binding.animation)
 
         downLoadScreen.visibility = View.VISIBLE
-
 
         viewModel = ViewModelProvider(
             this,

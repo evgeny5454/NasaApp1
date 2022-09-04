@@ -9,18 +9,16 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.evgeny_m.data.utils.MediaType
 import com.evgeny_m.nasaapp.databinding.FragmentApodBinding
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
-import com.evgeny_m.nasaapp.utilits.MediaType
-import com.evgeny_m.nasaapp.utilits.getYoutubeImage
 
 
 class ApodFragment : Fragment() {
 
     private lateinit var binding: FragmentApodBinding
     private lateinit var viewModel: ApodViewModel
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -45,14 +43,14 @@ class ApodFragment : Fragment() {
                         binding.copyright.text = it.copyright
 
                         Glide.with(requireActivity())
-                            .load(it.url)
+                            .load(it.urlImagePreview)
                             .into(binding.image)
                     }
                     MediaType.Video.type -> {
                         binding.videoPlayButton.visibility = View.VISIBLE
                         binding.copyright.visibility = View.GONE
                         Glide.with(requireActivity())
-                            .load(getYoutubeImage(it.url))
+                            .load(it.urlImagePreview)
                             .into(binding.image)
                     }
                 }
