@@ -8,9 +8,22 @@
         android:id="@+id/apodBaseFragment"
         android:name="com.evgeny_m.nasaapp.presenter.app_screens.ApodBaseFragment"
         android:label="fragment_apod_base"
-        tools:layout="@layout/fragment_apod_base" />
+        tools:layout="@layout/fragment_apod_base" >
+        <action
+            android:id="@+id/action_apodBaseFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/asteroidsNeoWsFragment"
         android:name="com.evgeny_m.asteroids_neows.AsteroidsNeoWsFragment"
         android:label="AsteroidsNeoWsFragment" />
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="com.evgeny_m.nasaapp.presenter.app_screens.ImageViewerFragment"
+        android:label="fragment_image_viewer"
+        tools:layout="@layout/fragment_image_viewer" >
+        <argument
+            android:name="uri"
+            app:argType="string" />
+    </fragment>
 </navigation>
