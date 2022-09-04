@@ -6,7 +6,7 @@
     app:startDestination="@id/apodBaseFragment">
     <fragment
         android:id="@+id/apodBaseFragment"
-        android:name="com.evgeny_m.nasaapp.presenter.app_screens.ApodBaseFragment"
+        android:name="com.evgeny_m.nasaapp.presenter.app_screens.pages.ApodBaseFragment"
         android:label="fragment_apod_base"
         tools:layout="@layout/fragment_apod_base" >
         <action
@@ -19,7 +19,7 @@
         android:label="AsteroidsNeoWsFragment" />
     <fragment
         android:id="@+id/imageViewerFragment"
-        android:name="com.evgeny_m.nasaapp.presenter.app_screens.ImageViewerFragment"
+        android:name="com.evgeny_m.nasaapp.presenter.app_screens.image_viewer.ImageViewerFragment"
         android:label="fragment_image_viewer"
         tools:layout="@layout/fragment_image_viewer" >
         <argument

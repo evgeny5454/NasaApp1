@@ -5,7 +5,7 @@
     android:id="@+id/window"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenter.app_screens.ImageViewerFragment">
+    tools:context=".presenter.app_screens.image_viewer.ImageViewerFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout

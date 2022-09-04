@@ -1,4 +1,4 @@
-package com.evgeny_m.nasaapp.presenter.app_screens
+package com.evgeny_m.nasaapp.presenter.app_screens.apod
 
 import android.os.Bundle
 import android.view.LayoutInflater
