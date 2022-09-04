@@ -6,12 +6,13 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.evgeny_m.data.utils.MediaType
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.nasaapp.databinding.ItemPictureBinding
+import com.evgeny_m.nasaapp.presenter.app_screens.ApodBaseFragmentDirections
 import java.time.LocalDate
 
 class PicturesAdapter(private val context: Context) :
@@ -42,9 +43,11 @@ class PicturesAdapter(private val context: Context) :
                         .load(image.urlImagePreview)
                         .centerCrop()
                         .into(picture)
-                    item.setOnClickListener(View.OnClickListener {
-                        Toast.makeText(context, "${image.url}", Toast.LENGTH_SHORT).show()})
-
+                    item.setOnClickListener { view ->
+                        val action = ApodBaseFragmentDirections
+                            .actionApodBaseFragmentToImageViewerFragment(image.url)
+                        view.findNavController().navigate(action)
+                    }
                 }
                 MediaType.Video.type -> {
                     picture.visibility = View.VISIBLE
@@ -56,11 +59,11 @@ class PicturesAdapter(private val context: Context) :
                         .load(image.urlImagePreview)
                         .centerCrop()
                         .into(picture)
-                    item.setOnClickListener(View.OnClickListener {
+                    item.setOnClickListener {
                         val uri = Uri.parse(image.url)
                         val intent = Intent(Intent.ACTION_VIEW, uri)
                         context.startActivity(intent)
-                    })
+                    }
                 }
                 MediaType.Web.type -> {
                     picture.visibility = View.VISIBLE
@@ -69,11 +72,11 @@ class PicturesAdapter(private val context: Context) :
                     titleWeb.visibility = View.VISIBLE
 
                     titleWeb.text = image.title
-                    item.setOnClickListener(View.OnClickListener {
+                    item.setOnClickListener {
                         val uri = Uri.parse(image.url)
                         val intent = Intent(Intent.ACTION_VIEW, uri)
                         context.startActivity(intent)
-                    })
+                    }
                 }
                 else -> {}
             }

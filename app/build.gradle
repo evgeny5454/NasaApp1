@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 }
 
@@ -36,6 +37,10 @@ android {
 }
 
 dependencies {
+
+
+
+
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
@@ -48,8 +53,10 @@ dependencies {
     //Android Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    //implementation 'androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1'
+    //Images
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'com.squareup.picasso:picasso:2.8'
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     //Blur https://github.com/wasabeef/Blurry
@@ -59,6 +66,10 @@ dependencies {
     implementation project(path: ':data')
     implementation project(path: ':domain')
 
-    //Modules
+    //AppModules
     implementation project(path: ':Asteroids_NeoWs')
+    // ScaleImage
+    //implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+
+    implementation 'com.github.MikeOrtiz:TouchImageView:3.2.1'
 }

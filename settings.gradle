@@ -5,13 +5,18 @@ pluginManagement {
         mavenCentral()
     }
 }
+/*dependencies {
+    classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1'
+}*/
 dependencyResolutionManagement {
     //repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
+
 rootProject.name = "Nasa App"
 include ':app'
 include ':Asteroids_NeoWs'
