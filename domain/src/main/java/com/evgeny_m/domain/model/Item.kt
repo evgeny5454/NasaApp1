@@ -10,5 +10,5 @@ data class Item(
     val media_type: String,
     val service_version: String,
     val title: String,
-    val urlImage: String
+    val urlImagePreview: String
 )

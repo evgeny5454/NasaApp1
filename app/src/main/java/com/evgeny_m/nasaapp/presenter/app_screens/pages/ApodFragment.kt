@@ -43,14 +43,14 @@ class ApodFragment : Fragment() {
                         binding.copyright.text = it.copyright
 
                         Glide.with(requireActivity())
-                            .load(it.urlImage)
+                            .load(it.urlImagePreview)
                             .into(binding.image)
                     }
                     MediaType.Video.type -> {
                         binding.videoPlayButton.visibility = View.VISIBLE
                         binding.copyright.visibility = View.GONE
                         Glide.with(requireActivity())
-                            .load(it.urlImage)
+                            .load(it.urlImagePreview)
                             .into(binding.image)
                     }
                 }

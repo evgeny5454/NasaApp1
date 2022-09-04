@@ -21,11 +21,11 @@ fun apodToItem(apodData: ApodData): Item {
             copyright = apodData.copyright ?: "",
             date = stringToLocalDate(apodData.date!!),
             explanation = apodData.explanation ?: "",
-            url = apodData.hdurl ?: "",
+            url = apodData.url ?: "",
             media_type = MediaType.Video.type,
             service_version = apodData.service_version ?: "",
             title = apodData.title ?: "",
-            urlImage = "https://img.youtube.com/vi/$id/mqdefault.jpg"
+            urlImagePreview = "https://img.youtube.com/vi/$id/mqdefault.jpg"
         )
 
     } else if (!urlList.contains("www.youtube.com") &&
@@ -36,11 +36,11 @@ fun apodToItem(apodData: ApodData): Item {
             copyright = apodData.copyright ?: "",
             date = stringToLocalDate(apodData.date!!),
             explanation = apodData.explanation ?: "",
-            url = apodData.hdurl ?: "",
+            url = apodData.url ?: "",
             media_type = MediaType.Web.type,
             service_version = apodData.service_version ?: "",
             title = apodData.title ?: "",
-            urlImage = "http://favicon.yandex.net/favicon/${urlList[2]}"
+            urlImagePreview = "http://favicon.yandex.net/favicon/${urlList[2]}"
         )
     } else {
         return Item(
@@ -51,7 +51,7 @@ fun apodToItem(apodData: ApodData): Item {
             media_type = MediaType.Image.type,
             service_version = apodData.service_version ?: "",
             title = apodData.title ?: "",
-            urlImage = apodData.url
+            urlImagePreview = apodData.url
         )
     }
 }

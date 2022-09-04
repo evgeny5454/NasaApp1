@@ -1,9 +1,12 @@
 package com.evgeny_m.nasaapp.presenter.app_screens.pages
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.evgeny_m.data.utils.MediaType
@@ -36,9 +39,12 @@ class PicturesAdapter(private val context: Context) :
                     titleWeb.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(image.urlImage)
+                        .load(image.urlImagePreview)
                         .centerCrop()
                         .into(picture)
+                    item.setOnClickListener(View.OnClickListener {
+                        Toast.makeText(context, "${image.url}", Toast.LENGTH_SHORT).show()})
+
                 }
                 MediaType.Video.type -> {
                     picture.visibility = View.VISIBLE
@@ -47,9 +53,14 @@ class PicturesAdapter(private val context: Context) :
                     titleWeb.visibility = View.GONE
 
                     Glide.with(context)
-                        .load(image.urlImage)
+                        .load(image.urlImagePreview)
                         .centerCrop()
                         .into(picture)
+                    item.setOnClickListener(View.OnClickListener {
+                        val uri = Uri.parse(image.url)
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        context.startActivity(intent)
+                    })
                 }
                 MediaType.Web.type -> {
                     picture.visibility = View.VISIBLE
@@ -58,9 +69,15 @@ class PicturesAdapter(private val context: Context) :
                     titleWeb.visibility = View.VISIBLE
 
                     titleWeb.text = image.title
+                    item.setOnClickListener(View.OnClickListener {
+                        val uri = Uri.parse(image.url)
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        context.startActivity(intent)
+                    })
                 }
                 else -> {}
             }
+
         }
     }
 
