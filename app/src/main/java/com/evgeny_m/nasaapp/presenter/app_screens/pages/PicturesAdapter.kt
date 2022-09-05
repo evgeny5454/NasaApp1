@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.evgeny_m.data.utils.MediaType
 import com.evgeny_m.domain.model.Item
+import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.ItemPictureBinding
-import com.evgeny_m.nasaapp.presenter.app_screens.ApodBaseFragmentDirections
 import java.time.LocalDate
 
 class PicturesAdapter(private val context: Context) :
@@ -44,9 +44,9 @@ class PicturesAdapter(private val context: Context) :
                         .centerCrop()
                         .into(picture)
                     item.setOnClickListener { view ->
-                        val action = ApodBaseFragmentDirections
-                            .actionApodBaseFragmentToImageViewerFragment(image.url)
-                        view.findNavController().navigate(action)
+                        /*val action = ApodBaseFragmentDirections
+                            .actionApodBaseFragmentToImageViewerFragment(image.url)*/
+                        view.findNavController().navigate(R.id.action_apodBaseFragment_to_baseViewerFragment)
                     }
                 }
                 MediaType.Video.type -> {
