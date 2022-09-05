@@ -1,6 +1,5 @@
 package com.evgeny_m.nasaapp.presenter.view_model
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,19 +23,13 @@ class ApodViewModel(
     private val _archiveList = MutableLiveData<List<Item>>()
     val archiveList: LiveData<List<Item>> = _archiveList
 
+
     fun downloadItem() {
         viewModelScope.launch(Dispatchers.IO) {
             _item.postValue(downloadImageDataUseCase.execute())
         }
     }
 
-    /*fun downloadArchiveList() {
-        viewModelScope.launch {
-            _archiveList.postValue(
-                getListOfImagesUseCase.execute()
-            )
-        }
-    }*/
 
     fun downloadArchiveList(date: LocalDate?) {
         viewModelScope.launch {
