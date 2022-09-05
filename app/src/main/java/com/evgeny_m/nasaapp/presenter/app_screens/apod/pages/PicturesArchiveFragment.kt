@@ -1,7 +1,8 @@
-package com.evgeny_m.nasaapp.presenter.app_screens.pages
+package com.evgeny_m.nasaapp.presenter.app_screens.apod.pages
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.FragmentPicturesArchiveBinding
+import com.evgeny_m.nasaapp.presenter.app_screens.image_viewer.ViewerPager2Adapter
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
 
@@ -22,7 +24,7 @@ class PicturesArchiveFragment : Fragment() {
 
     private lateinit var binding: FragmentPicturesArchiveBinding
     private lateinit var viewModel: ApodViewModel
-    private lateinit var adapter: PicturesAdapter
+    private lateinit var adapter: PicturesArchiveAdapter
 
     lateinit var downLoadScreen: FrameLayout
 
@@ -34,6 +36,8 @@ class PicturesArchiveFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPicturesArchiveBinding.inflate(layoutInflater)
+
+
 
         downLoadScreen = binding.downloadScreen
 
@@ -50,20 +54,22 @@ class PicturesArchiveFragment : Fragment() {
 
         if (savedInstanceState == null) {
             viewModel.downloadArchiveList(null)
+        } else {
+            viewModel.getCashList()
         }
-        adapter = PicturesAdapter(requireContext())
+
+        adapter = PicturesArchiveAdapter(requireContext())
         val recyclerView = binding.recyclerView
         val layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
 
 
-        viewModel.archiveList.observe(viewLifecycleOwner) {
-            if (it != null) {
+        viewModel.cashList.observe(viewLifecycleOwner) {
+            Log.d("LISTTTT", it.toString())
                 adapter.addDownItems(it)
                 loading = true
                 downLoadScreen.visibility = View.INVISIBLE
-            }
         }
 
         binding.recyclerView.setOnScrollListener(object : RecyclerView.OnScrollListener() {

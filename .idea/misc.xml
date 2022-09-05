@@ -30,7 +30,9 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_image_viewer.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_pictures_archive.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_viewer.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/item_picture.xml" value="0.5887323943661972" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/item_picture.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/item_picture_full_screen.xml" value="0.1743659420289855" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/nav_content.xml" value="0.1" />
       </map>
     </option>
   </component>

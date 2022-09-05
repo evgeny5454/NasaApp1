@@ -5,7 +5,7 @@ import com.evgeny_m.domain.repository.Repository
 import java.time.LocalDate
 
 class GetListOfImagesUseCase(private val repository: Repository) {
-    suspend fun execute(date: LocalDate?): List<Item>? {
+    suspend fun execute(date: LocalDate?): List<Item> {
         return repository.getArrayImages(date = date)
     }
 }

@@ -1,4 +1,4 @@
-package com.evgeny_m.nasaapp.presenter.app_screens.pages
+package com.evgeny_m.nasaapp.presenter.app_screens.apod.pages
 
 import android.content.Context
 import android.content.Intent
@@ -15,8 +15,8 @@ import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.ItemPictureBinding
 import java.time.LocalDate
 
-class PicturesAdapter(private val context: Context) :
-    RecyclerView.Adapter<PicturesAdapter.PictureViewHolder>() {
+class PicturesArchiveAdapter(private val context: Context) :
+    RecyclerView.Adapter<PicturesArchiveAdapter.PictureViewHolder>() {
 
     private var images: MutableList<Item> = mutableListOf()
 
@@ -46,7 +46,8 @@ class PicturesAdapter(private val context: Context) :
                     item.setOnClickListener { view ->
                         /*val action = ApodBaseFragmentDirections
                             .actionApodBaseFragmentToImageViewerFragment(image.url)*/
-                        view.findNavController().navigate(R.id.action_apodBaseFragment_to_baseViewerFragment)
+                        view.findNavController()
+                            .navigate(R.id.action_apodBaseFragment_to_baseViewerFragment)
                     }
                 }
                 MediaType.Video.type -> {
@@ -89,12 +90,11 @@ class PicturesAdapter(private val context: Context) :
     }
 
     fun addDownItems(listData: List<Item>) {
-        if (images.isEmpty()) {
-            images.addAll(listData)
-        } else {
-            images.addAll(images.size, listData)
-        }
-        notifyItemRangeInserted(images.size, listData.size)
+       listData.forEach {
+           if (!images.contains(it))
+           images.add(images.size, it)
+           notifyItemInserted(images.size)
+       }
     }
 
     fun getLastDate(): LocalDate {

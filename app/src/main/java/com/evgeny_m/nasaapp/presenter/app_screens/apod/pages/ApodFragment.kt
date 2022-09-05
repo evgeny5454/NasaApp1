@@ -1,4 +1,4 @@
-package com.evgeny_m.nasaapp.presenter.app_screens.pages
+package com.evgeny_m.nasaapp.presenter.app_screens.apod.pages
 
 import android.os.Build
 import android.os.Bundle

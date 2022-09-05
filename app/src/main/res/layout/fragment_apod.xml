@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
-    tools:context=".presenter.app_screens.pages.ApodFragment">
+    tools:context=".presenter.app_screens.apod.pages.ApodFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
