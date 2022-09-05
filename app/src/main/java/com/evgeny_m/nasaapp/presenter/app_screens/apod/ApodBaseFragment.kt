@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.evgeny_m.nasaapp.databinding.FragmentApodBaseBinding
-import com.evgeny_m.nasaapp.presenter.app_screens.pages.ApodFragment
-import com.evgeny_m.nasaapp.presenter.app_screens.pages.PicturesArchiveFragment
+import com.evgeny_m.nasaapp.presenter.app_screens.apod.pages.ApodFragment
+import com.evgeny_m.nasaapp.presenter.app_screens.apod.pages.PicturesArchiveFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ApodBaseFragment : Fragment() {

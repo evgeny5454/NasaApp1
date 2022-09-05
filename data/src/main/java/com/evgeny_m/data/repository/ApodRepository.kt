@@ -7,7 +7,6 @@ import androidx.annotation.RequiresApi
 import com.evgeny_m.data.R
 import com.evgeny_m.data.apod_api.ApodApi
 import com.evgeny_m.data.model.ApodData
-import com.evgeny_m.data.stringToLocalDate
 import com.evgeny_m.data.utils.apodToItem
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.domain.repository.Repository
@@ -39,7 +38,6 @@ class ApodRepository(context: Context) : Repository {
             item?.let {
                 apodToItem(it)
             }
-
         } else {
             localDate = localDate.minusDays(ONE_DAY)
             getData()
@@ -48,7 +46,7 @@ class ApodRepository(context: Context) : Repository {
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun getArrayImages(date: LocalDate?): List<Item>? {
+    override suspend fun getArrayImages(date: LocalDate?): List<Item> {
 
         val result = mutableListOf<Item>()
 

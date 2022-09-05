@@ -40,7 +40,7 @@ class ViewerPager2Adapter(private val context: Context) :
                 .clearOnDetach()
 
             Picasso.get()
-                .load(image.url)
+                .load(image.urlImagePreview)
                 .into(imageView, object : Callback {
                     override fun onSuccess() {
                         downloadScreen.visibility = View.GONE
@@ -57,4 +57,11 @@ class ViewerPager2Adapter(private val context: Context) :
         return images.size
     }
 
+    fun addDownItems(listData: List<Item>) {
+        listData.forEach {
+            if (!images.contains(it))
+                images.add(images.size, it)
+            notifyItemInserted(images.size)
+        }
+    }
 }

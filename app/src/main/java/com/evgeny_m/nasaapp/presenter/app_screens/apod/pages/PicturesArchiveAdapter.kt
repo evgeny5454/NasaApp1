@@ -44,9 +44,8 @@ class PicturesAdapter(private val context: Context) :
                         .centerCrop()
                         .into(picture)
                     item.setOnClickListener { view ->
-                        /*val action = ApodBaseFragmentDirections
-                            .actionApodBaseFragmentToImageViewerFragment(image.url)*/
-                        view.findNavController().navigate(R.id.action_apodBaseFragment_to_baseViewerFragment)
+                        view.findNavController()
+                            .navigate(R.id.action_apodBaseFragment_to_baseViewerFragment)
                     }
                 }
                 MediaType.Video.type -> {
