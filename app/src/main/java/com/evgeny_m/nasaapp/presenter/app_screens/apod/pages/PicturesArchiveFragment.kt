@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.FragmentPicturesArchiveBinding
-import com.evgeny_m.nasaapp.presenter.app_screens.image_viewer.ViewerPager2Adapter
+import com.evgeny_m.nasaapp.presenter.app_screens.pages.PicturesAdapter
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
 
@@ -24,7 +24,7 @@ class PicturesArchiveFragment : Fragment() {
 
     private lateinit var binding: FragmentPicturesArchiveBinding
     private lateinit var viewModel: ApodViewModel
-    private lateinit var adapter: PicturesArchiveAdapter
+    private lateinit var adapter: PicturesAdapter
 
     lateinit var downLoadScreen: FrameLayout
 
@@ -58,7 +58,7 @@ class PicturesArchiveFragment : Fragment() {
             viewModel.getCashList()
         }
 
-        adapter = PicturesArchiveAdapter(requireContext())
+        adapter = PicturesAdapter(requireContext())
         val recyclerView = binding.recyclerView
         val layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.layoutManager = layoutManager
@@ -67,9 +67,9 @@ class PicturesArchiveFragment : Fragment() {
 
         viewModel.cashList.observe(viewLifecycleOwner) {
             Log.d("LISTTTT", it.toString())
-                adapter.addDownItems(it)
-                loading = true
-                downLoadScreen.visibility = View.INVISIBLE
+            adapter.addDownItems(it)
+            loading = true
+            downLoadScreen.visibility = View.INVISIBLE
         }
 
         binding.recyclerView.setOnScrollListener(object : RecyclerView.OnScrollListener() {

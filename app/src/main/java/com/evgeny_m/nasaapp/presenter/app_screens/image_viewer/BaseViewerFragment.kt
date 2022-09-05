@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.FragmentBaseViewerBinding
-import com.evgeny_m.nasaapp.presenter.app_screens.apod.pages.PicturesArchiveAdapter
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
 
@@ -26,7 +24,6 @@ class BaseViewerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBaseViewerBinding.inflate(layoutInflater)
-
 
 
         val viewerPager2 = binding.viewPager2

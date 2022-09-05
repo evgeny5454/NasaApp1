@@ -26,13 +26,9 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/NasaApp3/app/src/main/res/menu/menu_navigatoin_drawer.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_apod.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_apod_base.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_base_viewer.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_image_viewer.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_image_viewer.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_pictures_archive.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/fragment_viewer.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/item_picture.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/item_picture_full_screen.xml" value="0.1743659420289855" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/nav_content.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/NasaApp1/app/src/main/res/layout/item_picture.xml" value="0.5887323943661972" />
       </map>
     </option>
   </component>
