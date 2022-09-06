@@ -1,8 +1,8 @@
-package com.evgeny_m.nasaapp.presenter
+package com.evgeny_m.domain.cash
 
 import com.evgeny_m.domain.model.Item
 
-object CashList{
+object CashItems{
     private var cashList = mutableListOf<Item>()
 
     fun putList(list: List<Item>) {

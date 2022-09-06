@@ -6,7 +6,7 @@
     app:startDestination="@id/apodBaseFragment">
     <fragment
         android:id="@+id/apodBaseFragment"
-        android:name="com.evgeny_m.nasaapp.presenter.app_screens.apod.ApodBaseFragment"
+        android:name="com.evgeny_m.nasaapp.presenter.app_screens.apod.base_fragment.ApodBaseFragment"
         android:label="fragment_apod_base"
         tools:layout="@layout/fragment_apod_base" >
         <action
@@ -20,6 +20,10 @@
     <fragment
         android:id="@+id/baseViewerFragment"
         android:name="com.evgeny_m.nasaapp.presenter.app_screens.image_viewer.BaseViewerFragment"
-        android:label="BaseViewerFragment" />
+        android:label="BaseViewerFragment" >
+        <argument
+            android:name="currentItem"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

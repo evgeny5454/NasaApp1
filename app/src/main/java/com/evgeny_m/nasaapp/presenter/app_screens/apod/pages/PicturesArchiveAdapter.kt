@@ -13,6 +13,7 @@ import com.evgeny_m.data.utils.MediaType
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.ItemPictureBinding
+import com.evgeny_m.nasaapp.presenter.app_screens.apod.base_fragment.ApodBaseFragmentDirections
 import java.time.LocalDate
 
 class PicturesAdapter(private val context: Context) :
@@ -44,8 +45,9 @@ class PicturesAdapter(private val context: Context) :
                         .centerCrop()
                         .into(picture)
                     item.setOnClickListener { view ->
+                        val action = ApodBaseFragmentDirections.actionApodBaseFragmentToBaseViewerFragment(position)
                         view.findNavController()
-                            .navigate(R.id.action_apodBaseFragment_to_baseViewerFragment)
+                            .navigate(action)
                     }
                 }
                 MediaType.Video.type -> {
@@ -77,9 +79,10 @@ class PicturesAdapter(private val context: Context) :
                         context.startActivity(intent)
                     }
                 }
-                else -> {}
+                else -> {
+                    //noting to do
+                }
             }
-
         }
     }
 
@@ -88,12 +91,8 @@ class PicturesAdapter(private val context: Context) :
     }
 
     fun addDownItems(listData: List<Item>) {
-        if (images.isEmpty()) {
-            images.addAll(listData)
-        } else {
-            images.addAll(images.size, listData)
-        }
-        notifyItemRangeInserted(images.size, listData.size)
+        images.addAll(images.size, listData)
+        notifyItemInserted(images.size)
     }
 
     fun getLastDate(): LocalDate {

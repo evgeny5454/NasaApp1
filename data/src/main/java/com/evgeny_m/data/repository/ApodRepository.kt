@@ -11,6 +11,7 @@ import com.evgeny_m.data.utils.apodToItem
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.domain.repository.Repository
 import java.time.LocalDate
+import kotlin.coroutines.coroutineContext
 
 private const val DAYS_T0_SUBTRACT_59: Long = 59
 private const val DAYS_T0_SUBTRACT_19: Long = 19
@@ -47,7 +48,6 @@ class ApodRepository(context: Context) : Repository {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getArrayImages(date: LocalDate?): List<Item> {
-
         val result = mutableListOf<Item>()
 
         if (date == null) {
@@ -70,18 +70,20 @@ class ApodRepository(context: Context) : Repository {
                 val sortedList = list?.sortedBy { it.date }
                 val reversedList = sortedList?.reversed()
                 Log.d("RESPONSE_LIST", reversedList.toString())
-
+                Log.d("getArrayImagesFUN", "response = $response")
                 reversedList?.forEach {
+                    Log.d("getArrayImagesFUN", "item = $it")
                     result.add(apodToItem(it))
                 }
 
+            } else if (response.code() != 429) {
+                //not implemented
             } else {
                 endDate = endDate.minusDays(ONE_DAY)
                 return getArrayImages(endDate)
             }
 
         } catch (e: Exception) {
-            Log.d("Catch Exception", e.toString())
             endDate = endDate.minusDays(ONE_DAY)
             return getArrayImages(endDate)
         }

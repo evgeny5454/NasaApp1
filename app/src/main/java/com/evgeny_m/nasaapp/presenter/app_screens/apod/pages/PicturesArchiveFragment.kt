@@ -54,10 +54,7 @@ class PicturesArchiveFragment : Fragment() {
 
         if (savedInstanceState == null) {
             viewModel.downloadArchiveList(null)
-        } else {
-            viewModel.getCashList()
         }
-
         adapter = PicturesAdapter(requireContext())
         val recyclerView = binding.recyclerView
         val layoutManager = GridLayoutManager(requireContext(), 2)
@@ -65,7 +62,7 @@ class PicturesArchiveFragment : Fragment() {
         recyclerView.adapter = adapter
 
 
-        viewModel.cashList.observe(viewLifecycleOwner) {
+        viewModel.archiveList.observe(viewLifecycleOwner) {
             Log.d("LISTTTT", it.toString())
             adapter.addDownItems(it)
             loading = true

@@ -1,4 +1,4 @@
-package com.evgeny_m.nasaapp.presenter.app_screens.apod
+package com.evgeny_m.nasaapp.presenter.app_screens.apod.base_fragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

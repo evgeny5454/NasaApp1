@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.FragmentBaseViewerBinding
@@ -15,9 +16,10 @@ import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
 
 
 class BaseViewerFragment : Fragment() {
-
     private lateinit var binding: FragmentBaseViewerBinding
     private lateinit var viewModel: ApodViewModel
+
+    private val args by navArgs<BaseViewerFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,15 +27,12 @@ class BaseViewerFragment : Fragment() {
     ): View {
         binding = FragmentBaseViewerBinding.inflate(layoutInflater)
 
-
-        val viewerPager2 = binding.viewPager2
-
-
         viewModel = ViewModelProvider(
             this,
             ApodViewModelFactory(requireContext())
         )[ApodViewModel::class.java]
 
+        val viewerPager2 = binding.viewPager2
         val adapter = ViewerPager2Adapter(requireContext())
         viewerPager2.setPageTransformer(ZoomOutPageTransformer())
         viewerPager2.adapter = adapter
@@ -49,8 +48,8 @@ class BaseViewerFragment : Fragment() {
         download.visibility = View.VISIBLE
 
         viewModel.cashList.observe(viewLifecycleOwner) {
-            Log.d("ITEMSSSSS", it.toString())
             adapter.addDownItems(it)
+            viewerPager2.setCurrentItem(args.currentItem,false)
             download.visibility = View.GONE
         }
         return binding.root
