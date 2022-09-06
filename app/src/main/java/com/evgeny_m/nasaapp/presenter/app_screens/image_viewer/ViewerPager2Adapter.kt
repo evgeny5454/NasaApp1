@@ -58,10 +58,8 @@ class ViewerPager2Adapter(private val context: Context) :
     }
 
     fun addDownItems(listData: List<Item>) {
-        listData.forEach {
-            if (!images.contains(it))
-                images.add(images.size, it)
-            notifyItemInserted(images.size)
-        }
+        images.addAll(images.size, listData)
+        notifyItemInserted(images.size)
+
     }
 }

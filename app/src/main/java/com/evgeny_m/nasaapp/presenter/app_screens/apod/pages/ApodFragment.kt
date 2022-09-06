@@ -2,6 +2,7 @@ package com.evgeny_m.nasaapp.presenter.app_screens.apod.pages
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.evgeny_m.data.utils.MediaType
+import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.FragmentApodBinding
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 
 
 class ApodFragment : Fragment() {
@@ -33,6 +37,7 @@ class ApodFragment : Fragment() {
             this,
             ApodViewModelFactory(requireContext())
         )[ApodViewModel::class.java]
+        viewModel.downloadItem()
 
         viewModel.item.observe(viewLifecycleOwner) {
 
