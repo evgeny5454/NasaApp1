@@ -1,7 +1,6 @@
 package com.evgeny_m.nasaapp.presenter.app_screens.image_viewer
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +48,7 @@ class BaseViewerFragment : Fragment() {
 
         viewModel.cashList.observe(viewLifecycleOwner) {
             adapter.addDownItems(it)
-            viewerPager2.setCurrentItem(args.currentItem,false)
+            viewerPager2.setCurrentItem(args.currentItem, false)
             download.visibility = View.GONE
         }
         return binding.root

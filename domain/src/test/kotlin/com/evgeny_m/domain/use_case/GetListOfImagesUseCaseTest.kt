@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
-class TestRepository() : Repository {
+class TestRepository : Repository {
     override suspend fun getData(): Item? {
         TODO("Not yet implemented")
     }
@@ -15,16 +15,18 @@ class TestRepository() : Repository {
     override suspend fun getArrayImages(date: LocalDate?): List<Item> {
         val list = mutableListOf<Item>()
         for (i in 1..10) {
-            list.add(Item(
-                copyright = "$i",
-                date = LocalDate.now(),
-                explanation = "$i",
-                url = "$i",
-                media_type = "$i",
-                service_version = "$i",
-                title = "$i",
-                urlImagePreview = "$i"
-            ))
+            list.add(
+                Item(
+                    copyright = "$i",
+                    date = LocalDate.now(),
+                    explanation = "$i",
+                    url = "$i",
+                    media_type = "$i",
+                    service_version = "$i",
+                    title = "$i",
+                    urlImagePreview = "$i"
+                )
+            )
         }
         return list
     }
@@ -41,16 +43,18 @@ class GetListOfImagesUseCaseTest {
     fun `should return list of items`() = runBlocking {
         val actual = mutableListOf<Item>()
         for (i in 1..10) {
-            actual.add(Item(
-                copyright = "$i",
-                date = LocalDate.now(),
-                explanation = "$i",
-                url = "$i",
-                media_type = "$i",
-                service_version = "$i",
-                title = "$i",
-                urlImagePreview = "$i"
-            ))
+            actual.add(
+                Item(
+                    copyright = "$i",
+                    date = LocalDate.now(),
+                    explanation = "$i",
+                    url = "$i",
+                    media_type = "$i",
+                    service_version = "$i",
+                    title = "$i",
+                    urlImagePreview = "$i"
+                )
+            )
         }
         val expected = getListOfImagesUseCase.execute(null)
         Assertions.assertEquals(expected, actual)
