@@ -10,12 +10,15 @@ import com.bumptech.glide.Glide
 import com.evgeny_m.domain.model.Item
 import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.ItemPictureFullScreenBinding
+import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
+import com.ortiz.touchview.OnTouchImageViewListener
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-class ViewerPager2Adapter(private val context: Context) :
+class ViewerPager2Adapter(private val context: Context, private val viewModel: ApodViewModel) :
 
     RecyclerView.Adapter<ViewerPager2Adapter.ImagesViewHolder>() {
+
 
     private var images: MutableList<Item> = mutableListOf()
 
@@ -41,7 +44,7 @@ class ViewerPager2Adapter(private val context: Context) :
 
             Picasso.get()
                 .load(image.urlImagePreview)
-                .into(imageView, object : Callback {
+                .into(touchImageView, object : Callback {
                     override fun onSuccess() {
                         downloadScreen.visibility = View.GONE
                     }
@@ -50,6 +53,16 @@ class ViewerPager2Adapter(private val context: Context) :
                         Log.d("DEBUG_Error", "ImageViewerFragment error = $e")
                     }
                 })
+            touchImageView.setOnTouchImageViewListener(object : OnTouchImageViewListener {
+                val currentZoom = touchImageView.currentZoom
+                override fun onMove() {
+                    if (currentZoom != touchImageView.currentZoom) {
+                        viewModel.setState(false)
+                    } else {
+                        viewModel.setState(true)
+                    }
+                }
+            })
         }
     }
 

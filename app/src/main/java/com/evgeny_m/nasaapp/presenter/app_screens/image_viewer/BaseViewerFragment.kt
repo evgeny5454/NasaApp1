@@ -1,7 +1,6 @@
 package com.evgeny_m.nasaapp.presenter.app_screens.image_viewer
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +32,7 @@ class BaseViewerFragment : Fragment() {
         )[ApodViewModel::class.java]
 
         val viewerPager2 = binding.viewPager2
-        val adapter = ViewerPager2Adapter(requireContext())
+        val adapter = ViewerPager2Adapter(requireContext(), viewModel)
         viewerPager2.setPageTransformer(ZoomOutPageTransformer())
         viewerPager2.adapter = adapter
 
@@ -49,10 +48,12 @@ class BaseViewerFragment : Fragment() {
 
         viewModel.cashList.observe(viewLifecycleOwner) {
             adapter.addDownItems(it)
-            viewerPager2.setCurrentItem(args.currentItem,false)
+            viewerPager2.setCurrentItem(args.currentItem, false)
             download.visibility = View.GONE
+        }
+        viewModel.stateAdapter.observe(viewLifecycleOwner) {
+            viewerPager2.isUserInputEnabled = it
         }
         return binding.root
     }
-
 }
