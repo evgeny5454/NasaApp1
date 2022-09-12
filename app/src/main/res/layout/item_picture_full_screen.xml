@@ -7,7 +7,7 @@
 
 
     <com.ortiz.touchview.TouchImageView
-        android:id="@+id/imageView"
+        android:id="@+id/touch_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"

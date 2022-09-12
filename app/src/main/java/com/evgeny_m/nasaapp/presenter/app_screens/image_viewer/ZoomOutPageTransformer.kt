@@ -2,9 +2,10 @@ package com.evgeny_m.nasaapp.presenter.app_screens.image_viewer
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import kotlin.math.abs
 
-private const val MIN_SCALE = 0.85f
-private const val MIN_ALPHA = 0.5f
+private const val MIN_SCALE = 0.9f
+private const val MIN_ALPHA = 0.9f
 
 class ZoomOutPageTransformer : ViewPager2.PageTransformer {
 
@@ -19,7 +20,7 @@ class ZoomOutPageTransformer : ViewPager2.PageTransformer {
                 }
                 position <= 1 -> { // [-1,1]
                     // Modify the default slide transition to shrink the page as well
-                    val scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position))
+                    val scaleFactor = MIN_SCALE.coerceAtLeast(1 - abs(position))
                     val vertMargin = pageHeight * (1 - scaleFactor) / 2
                     val horzMargin = pageWidth * (1 - scaleFactor) / 2
                     translationX = if (position < 0) {

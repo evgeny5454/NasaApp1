@@ -25,6 +25,9 @@ class ApodViewModel(
     private val _archiveList = MutableLiveData<List<Item>>()
     val archiveList: LiveData<List<Item>> = _archiveList
 
+    private val _stateAdapter = MutableLiveData<Boolean>()
+    val stateAdapter : LiveData<Boolean> = _stateAdapter
+
 
     fun downloadItem() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -42,5 +45,9 @@ class ApodViewModel(
 
     fun getCashList() {
         _cashList.postValue(CashItems.getList())
+    }
+
+    fun setState(boolean: Boolean) {
+        _stateAdapter.postValue(boolean)
     }
 }

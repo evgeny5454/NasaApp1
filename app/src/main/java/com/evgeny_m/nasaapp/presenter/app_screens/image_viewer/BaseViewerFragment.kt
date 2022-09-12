@@ -32,7 +32,7 @@ class BaseViewerFragment : Fragment() {
         )[ApodViewModel::class.java]
 
         val viewerPager2 = binding.viewPager2
-        val adapter = ViewerPager2Adapter(requireContext())
+        val adapter = ViewerPager2Adapter(requireContext(), viewModel)
         viewerPager2.setPageTransformer(ZoomOutPageTransformer())
         viewerPager2.adapter = adapter
 
@@ -51,7 +51,9 @@ class BaseViewerFragment : Fragment() {
             viewerPager2.setCurrentItem(args.currentItem, false)
             download.visibility = View.GONE
         }
+        viewModel.stateAdapter.observe(viewLifecycleOwner) {
+            viewerPager2.isUserInputEnabled = it
+        }
         return binding.root
     }
-
 }
