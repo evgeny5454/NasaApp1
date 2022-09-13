@@ -4,17 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.evgeny_m.domain.cash.CashItems
 import com.evgeny_m.domain.model.Item
+import com.evgeny_m.domain.use_case.DownloadImageByUrlUseCase
 import com.evgeny_m.domain.use_case.GetImageByDateUseCase
 import com.evgeny_m.domain.use_case.GetListOfImagesUseCase
-import com.evgeny_m.domain.cash.CashItems
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class ApodViewModel(
     private val downloadImageDataUseCase: GetImageByDateUseCase,
-    private val getListOfImagesUseCase: GetListOfImagesUseCase
+    private val getListOfImagesUseCase: GetListOfImagesUseCase,
+    private val downloadImageByUrlUseCase: DownloadImageByUrlUseCase
 ) : ViewModel() {
     private val _cashList = MutableLiveData<List<Item>>()
     val cashList: LiveData<List<Item>> = _cashList
@@ -26,7 +28,7 @@ class ApodViewModel(
     val archiveList: LiveData<List<Item>> = _archiveList
 
     private val _stateAdapter = MutableLiveData<Boolean>()
-    val stateAdapter : LiveData<Boolean> = _stateAdapter
+    val stateAdapter: LiveData<Boolean> = _stateAdapter
 
 
     fun downloadItem() {
@@ -49,5 +51,9 @@ class ApodViewModel(
 
     fun setState(boolean: Boolean) {
         _stateAdapter.postValue(boolean)
+    }
+
+    fun downloadImage(url: String, title: String) {
+        downloadImageByUrlUseCase.execute(url, title)
     }
 }

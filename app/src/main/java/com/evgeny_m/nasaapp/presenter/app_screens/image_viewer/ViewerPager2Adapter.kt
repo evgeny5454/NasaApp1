@@ -34,6 +34,7 @@ class ViewerPager2Adapter(private val context: Context, private val viewModel: A
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         val image = images[position]
         with(holder.binding) {
+            touchImageView.resetZoom()
             downloadScreen.visibility = View.VISIBLE
 
             Glide.with(context)
@@ -74,5 +75,9 @@ class ViewerPager2Adapter(private val context: Context, private val viewModel: A
         images.addAll(images.size, listData)
         notifyItemInserted(images.size)
 
+    }
+
+    fun getItem(position: Int) : Item {
+        return images[position]
     }
 }

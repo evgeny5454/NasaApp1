@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -12,6 +13,7 @@ import com.evgeny_m.nasaapp.R
 import com.evgeny_m.nasaapp.databinding.FragmentBaseViewerBinding
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModel
 import com.evgeny_m.nasaapp.presenter.view_model.ApodViewModelFactory
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class BaseViewerFragment : Fragment() {
@@ -50,9 +52,27 @@ class BaseViewerFragment : Fragment() {
             adapter.addDownItems(it)
             viewerPager2.setCurrentItem(args.currentItem, false)
             download.visibility = View.GONE
+
+            TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
+                tab.text = it[position].date.toString()
+            }.attach()
+
         }
         viewModel.stateAdapter.observe(viewLifecycleOwner) {
             viewerPager2.isUserInputEnabled = it
+        }
+
+        binding.toolbar.setOnMenuItemClickListener{
+            when (it.itemId) {
+                R.id.download -> {
+                    val position : Int = viewerPager2.currentItem
+                    val item = adapter.getItem(position)
+                    viewModel.downloadImage(item.url, item.title)
+                    //Toast.makeText(requireContext(), "${item.date}\n${item.url}", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
         }
         return binding.root
     }

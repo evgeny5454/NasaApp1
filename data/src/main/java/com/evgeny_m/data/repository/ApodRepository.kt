@@ -9,15 +9,14 @@ import com.evgeny_m.data.apod_api.ApodApi
 import com.evgeny_m.data.model.ApodData
 import com.evgeny_m.data.utils.apodToItem
 import com.evgeny_m.domain.model.Item
-import com.evgeny_m.domain.repository.Repository
+import com.evgeny_m.domain.repository.ApodRepositoryImpl
 import java.time.LocalDate
-import kotlin.coroutines.coroutineContext
 
 private const val DAYS_T0_SUBTRACT_59: Long = 59
 private const val DAYS_T0_SUBTRACT_19: Long = 19
 private const val ONE_DAY: Long = 1
 
-class ApodRepository(context: Context) : Repository {
+class ApodRepository(context: Context) : ApodRepositoryImpl {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private var localDate = LocalDate.now()
