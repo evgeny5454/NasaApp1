@@ -1,13 +1,13 @@
 package com.evgeny_m.domain.use_case
 
 import com.evgeny_m.domain.model.Item
-import com.evgeny_m.domain.repository.Repository
+import com.evgeny_m.domain.repository.ApodRepositoryImpl
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
-class TestRepository : Repository {
+class TestRepository : ApodRepositoryImpl {
     override suspend fun getData(): Item? {
         TODO("Not yet implemented")
     }
